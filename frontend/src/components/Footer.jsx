@@ -42,15 +42,15 @@ const Footer = () => {
         <div className="">
           <p className="text-xl font-medium mb-5">GET IN TOUCH</p>
           <ul className="flex flex-col flex-1 text-gray-600">
-            <li className="mb-2">+123 456 7890</li>
-            <li className="mb-2">contact@forevryou.com </li>
+            <li className="mb-2">+7 777 837 80 11</li>
+            <li className="mb-2">contact@velvet.com </li>
           </ul>
         </div>
       </div>
       <div>
         <hr />
         <p className="py-5 text-sm text-center">
-          Copyright 2024@ forever.com - All Rights Reserved
+          Copyright 2024@ Velvet-threads.com - All Rights Reserved
         </p>
       </div>
     </div>

@@ -26,19 +26,19 @@ const Contact = () => {
         <div className="flex flex-col justify-center items-start gap-4">
           <p className="font-semibold text-altext-gray-600">Our Store</p>
           <p className="text-gray-500">
-            7298 King Lodge
+            01000 Astana, Kazakhstan
             <br />
-            North Elton, Illinois 78154
+            Turan ave. 59/2
           </p>
 
           <p className="text-gray-800">
-            Tel: <span className="text-gray-500">+1 800 123 1234</span>
+            Tel: <span className="text-gray-500">+7 777 837 80 11</span>
           </p>
           <p className=" text-gray-800">
-            Email: <span className="text-gray-500">admin@forever.com</span>
+            Email: <span className="text-gray-500">admin@velvet-threads.com</span>
           </p>
 
-          <p className="text-gray-500">Careers at Forever</p>
+          <p className="text-gray-500">Careers at Velvet-threads</p>
           <p className="text-gray-500">
             Learn more about our teams and job openings.
           </p>
