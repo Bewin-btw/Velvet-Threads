@@ -9,7 +9,34 @@ const createToken = (id) => {
 
 // Logic for logining
 const loginUser = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const user = await userModel.findOne({ email })
 
+        if (!user) {
+            return res.status(400).json({
+                success: false,
+                msg: "invalid credentials"
+            })
+        }
+
+        const passVerificated = await bcrypt.compare(password, user.password)
+        if (passVerificated){
+            const token = createToken(user._id)
+            return res.status(200).json({
+                success:true,
+                token:token
+            })
+        } else {
+            return res.status(400).json({
+                success:false,
+                msg:"invalid credentials"
+            })
+        }
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ success: false, msg: error.message })
+    }
 }
 
 // Logic for registering
@@ -59,7 +86,7 @@ const registerUser = async (req, res) => {
 
 // Logic for admin loging
 const adminLogin = async (req, res) => {
-
+    
 }
 
 export { loginUser, registerUser, adminLogin }
