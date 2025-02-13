@@ -15,7 +15,7 @@ const Footer = () => {
         <div className="">
           <img src={assets.logo} alt="" className="mb-5 w-32 " />
           <p className="w-full sm:w-2/3 text-gray-600">
-            Shop with Forever and experience the convenience of online shopping
+            Shop with Velvet-threads and experience the convenience of online shopping
             like never before.
           </p>
         </div>
