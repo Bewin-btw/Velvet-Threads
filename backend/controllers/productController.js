@@ -88,8 +88,9 @@ const singleProduct = async (req, res) => {
             console.log(`invalid ObjectId: ${productId}`);
             return res.status(400).json({ success: false, msg: "Invalid product ID" });
         }
+
         const product = await productModel.findById(productId)
-        console.log(product)
+
         res.status(200).json({ success: true, product })
     } catch (error) {
         console.log(error)
