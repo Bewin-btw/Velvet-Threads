@@ -1,6 +1,6 @@
 import { v2 as cloudinary } from "cloudinary";
 import productModel from "../models/productModel.js";
-
+import mongoose from "mongoose"
 
 const addProduct = async (req, res) => {
     try {
@@ -84,7 +84,12 @@ const singleProduct = async (req, res) => {
             console.log("product id wasn't provided")
             return res.status(400).json({ success: false, msg: "no product id found(productId)" })
         }
+        if (!mongoose.Types.ObjectId.isValid(productId)) {
+            console.log(`invalid ObjectId: ${productId}`);
+            return res.status(400).json({ success: false, msg: "Invalid product ID" });
+        }
         const product = await productModel.findById(productId)
+        console.log(product)
         res.status(200).json({ success: true, product })
     } catch (error) {
         console.log(error)

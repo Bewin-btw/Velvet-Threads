@@ -1,38 +1,35 @@
-import { useContext } from 'react';
-import { ShopContext } from '../Context/ShopContext';
+import React, { useContext } from 'react';
+import { ShopContext } from '../context/ShopContext';
 import Title from './Title';
 
 const CartTotal = () => {
-  const { currency, delivery_fee, getCartAmount } = useContext(ShopContext);
+  const { currency, delievry_fee, getCartAmout } = useContext(ShopContext);
+
+  const subtotal = getCartAmout() || 0;
+  const shippingFee = delievry_fee || 0; 
+  const total = subtotal + shippingFee; 
+
 
   return (
-    <div className="w-full">
-      <div className="text-2xl">
-        <Title text1={'CART'} text2={'TOTAL'} />
+    <div className='w-full'>
+      <div className='text-2xl'>
+        <Title text1={"CART"} text2={"TOTALS"} />
       </div>
 
-      <div className="flex flex-col gap-2 mt-2 text-sm ">
-        <div className="flex justify-between">
+      <div className='flex flex-col gap-2 mt-2 text-sm'>
+        <div className='flex justify-between'>
           <p>Subtotal</p>
-          <p>
-            {' '}
-            {currency} {getCartAmount()}.00
-          </p>
+          <p>{currency} {subtotal}.00</p>
         </div>
-        <div className="flex justify-between">
+        <hr />
+        <div className='flex justify-between'>
           <p>Shipping Fee</p>
-          <p>
-            {' '}
-            {currency} {delivery_fee}.00
-          </p>
+          <p>{currency} {subtotal === 0 ? 0 : shippingFee}.00</p>
         </div>
-        <div className="flex justify-between">
-          <p>Total</p>
-          <p>
-            {' '}
-            {currency}{' '}
-            {getCartAmount() === 0 ? 0 : getCartAmount() + delivery_fee}.00
-          </p>
+        <hr />
+        <div className='flex justify-between'>
+          <b>Total</b>
+          <b>{currency} {subtotal === 0 ? 0 : total }.00</b>
         </div>
       </div>
     </div>
