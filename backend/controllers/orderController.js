@@ -108,13 +108,22 @@ const verifyStripe = async (req, res) => {
     }
 }
 
-const placeOrderRazorpay = async (req, res) => {
-
-}
-
 const allOrders = async (req, res) => {
     try {
-        const orders = await orderModel.find({});
+        // lean() для получения обычных js-объектов
+        let orders = await orderModel.find({}).lean();;
+
+        orders = orders.map(order => {
+            if (
+              order.amount &&
+              typeof order.amount === 'object' &&
+              order.amount.low !== undefined
+            ) {
+              order.amount = order.amount.toString();
+            }
+
+            return order;
+          });
 
         res.status(200).json({ success: true, orders });
     } catch (error) {
@@ -148,4 +157,4 @@ const updateStatus = async (req, res) => {
     }
 }
 
-export { placeOrder, placeOrderRazorpay, placeOrderStripe, allOrders, userOrders, updateStatus, verifyStripe };
+export { placeOrder, placeOrderStripe, allOrders, userOrders, updateStatus, verifyStripe };
