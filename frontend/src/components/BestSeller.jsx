@@ -6,15 +6,16 @@ import ProductItem from './ProductItem';
 const BestSeller = () => {
   const { products } = useContext(ShopContext);
 
-  
+
 
   const [bestSeller, SetBestseller] = useState([]);
 
   useEffect(() => {
-    const bestProduct = products.filter((item) => item.bestSeller);
-    SetBestseller(bestProduct.slice(0, 5));
+    if (products.length > 0) {
+      const bestProduct = products.filter((item) => item.bestseller === true || item.bestseller === "true");
+      SetBestseller(bestProduct.slice(0, 5));
+    }
   }, [products]);
-
 
 
   return (
@@ -22,7 +23,7 @@ const BestSeller = () => {
       <div className=" text-center text-3xl py-8">
         <Title text1={'BEST'} text2={'SELLER'} />
         <p className=" w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600">
-        Check out our best-selling items, praised for their quality and style. These customer favorites are top-rated for a reason!
+          Check out our best-selling items, praised for their quality and style. These customer favorites are top-rated for a reason!
         </p>
       </div>
 
