@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 
 const adminAuth = async (req, res, next)=>{
     try {
-        const token = (req.headers.authorization || "").replace(/Bearer\s?/, "");
+        const token = (req.headers.authorization || req.headers.token || "").replace(/Bearer\s?/, "");
         if (!token) {
             return res.status(401).json({success:false, msg:"forbidden"})
         }
