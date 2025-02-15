@@ -115,15 +115,32 @@ const allOrders = async (req, res) => {
 
         orders = orders.map(order => {
             if (
-              order.amount &&
-              typeof order.amount === 'object' &&
-              order.amount.low !== undefined
+                order.amount &&
+                typeof order.amount === 'object' &&
+                (
+                    order.amount.low !== undefined ||
+                    order.amount.high !== undefined ||
+                    order.amount.unsigned !== undefined
+                )
             ) {
-              order.amount = order.amount.toString();
+                order.amount = order.amount.toString();
             }
-
+            order.items = order.items.map(item => {
+                if (
+                    item.price &&
+                    typeof item.price === 'object' &&
+                    (
+                        order.amount.low !== undefined ||
+                        order.amount.high !== undefined ||
+                        order.amount.unsigned !== undefined
+                    )
+                ) {
+                    item.price = item.price.toString();
+                }
+                return item;
+            });
             return order;
-          });
+        });
 
         res.status(200).json({ success: true, orders });
     } catch (error) {

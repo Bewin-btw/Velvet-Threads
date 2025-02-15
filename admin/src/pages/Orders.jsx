@@ -25,18 +25,18 @@ const Orders = ({ token }) => {
   };
 
 
-  const statusHandler = async(e, orderId)=>{
+  const statusHandler = async (e, orderId) => {
     try {
 
-      const response = await axios.post(`${backendUrl}/api/order/status`, {orderId, status: e.target.value}, {
+      const response = await axios.post(`${backendUrl}/api/order/status`, { orderId, status: e.target.value }, {
         headers: {
-          token : token
+          token: token
         }
       })
-      if(response.data.success){
-          await fetchAllOrders()
+      if (response.data.success) {
+        await fetchAllOrders()
       }
-      
+
     } catch (error) {
       console.log(error);
       toast.error(error.message);
@@ -103,10 +103,10 @@ const Orders = ({ token }) => {
               </p>
               <p className="font-semibold text-lg text-gray-800">
                 {currency}
-                {order.amount}
+                {typeof order.amount === 'object' ? order.amount.toString() : order.amount}
               </p>
               <div className="mt-3">
-                <select onChange={(e)=>statusHandler(e , order._id)} className="border-gray-300 rounded-md shadow-sm w-full text-sm">
+                <select onChange={(e) => statusHandler(e, order._id)} className="border-gray-300 rounded-md shadow-sm w-full text-sm">
                   <option value="Order Placed">Order Placed</option>
                   <option value="Packing">Packing</option>
                   <option value="Shipped">Shipped</option>
