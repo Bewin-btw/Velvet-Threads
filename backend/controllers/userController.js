@@ -2,7 +2,7 @@ import userModel from "../models/userModel.js";
 import validator from "validator";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-import "dotenv/config" 
+import "dotenv/config"
 
 const createToken = (id) => {
     return jwt.sign({ id }, process.env.JWT_SECRET)
@@ -90,10 +90,10 @@ const adminLogin = async (req, res) => {
     try {
         const { email, password } = req.body
         if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
-            const token = jwt.sign(email+password, process.env.JWT_SECRET)
-            res.status(200).json({success:true, token})
+            const token = jwt.sign(email + password, process.env.JWT_SECRET)
+            res.status(200).json({ success: true, token })
         } else {
-            res.status(400).json({success:false, msg:"invalid credentials"})
+            res.status(400).json({ success: false, msg: "invalid credentials" })
         }
     } catch (error) {
         console.log(error)
@@ -101,4 +101,16 @@ const adminLogin = async (req, res) => {
     }
 }
 
-export { loginUser, registerUser, adminLogin }
+const getUser = async (req, res) => {
+    try {
+        const { userId } = req.body
+        const user = await userModel.findOne({ _id: userId })
+
+        res.status(200).json({ success: true, user })
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ success: false, msg: error.message })
+    }
+}
+
+export { loginUser, registerUser, adminLogin, getUser }
