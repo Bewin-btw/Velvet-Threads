@@ -76,14 +76,13 @@ You can reach the deployed version here - https://velvet-threads-frontend.vercel
       CLOUDINARY_API_KEY=your_cloudinary_api_key
       CLOUDINARY_SECRET_KEY=your_cloudinary_api_secret
 5) Run the Application:
-backend:
       ```bash 
          cd backend
          node server.js
-frontend:
-      ```bash
-         cd frontend
+      and
+      	 cd frontend
          npm run dev
+
 
 
 Configuration
@@ -91,8 +90,3 @@ Configuration
 	•	Authentication: JWT is used to secure API endpoints. Ensure that JWT_SECRET is set in your environment variables.
 	•	Payment Processing: Stripe is used for payment processing. Make sure to configure your Stripe keys properly in the environment variables.
 	•	Image Storage: Images are uploaded to Cloudinary. Configure your Cloudinary credentials in the .env file.
-
-
-
-
-      
