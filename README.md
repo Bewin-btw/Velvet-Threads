@@ -1,6 +1,9 @@
 # Velvet-Threads
 
 You can reach the deployed version here - https://velvet-threads-frontend.vercel.app
+Deployed API - https://velvet-threads.vercel.app
+Deployed admin panel - https://velvet-threads-admin.vercel.app
+
 
 # Velvet-Threads
 
