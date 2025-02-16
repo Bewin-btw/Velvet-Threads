@@ -52,8 +52,47 @@ You can reach the deployed version here - https://velvet-threads-frontend.vercel
 
 ### Installation Steps
 
-1. **Clone the repository:**
-
+   
+1) **Clone the repo**
    ```bash
-   git clone https://github.com/Bewin-btw/Velvet-Threads
-   cd Velvet-Threads
+      git clone https://github.com/Bewin-btw/Velvet-Threads
+      cd Velvet-Threads
+2) **Install backend dependencies**
+   ```bash
+      cd backend
+      npm install
+3) **Install frontend dependencies**
+   ```bash
+      cd ../frontend  
+      npm install
+4) **Setup Environment Variables**
+   ```bash      
+      Create a .env file in the backend folder with the following variables:
+      PORT=3000
+      MONGODB_URL=your_mongodb_connection_string
+      JWT_SECRET=your_jwt_secret_key
+      STRIPE_SECRET_KEY=your_stripe_secret_key
+      CLOUDINARY_NAME=your_cloudinary_cloud_name
+      CLOUDINARY_API_KEY=your_cloudinary_api_key
+      CLOUDINARY_SECRET_KEY=your_cloudinary_api_secret
+5) Run the Application:
+backend:
+      ```bash 
+         cd backend
+         node server.js
+frontend:
+      ```bash
+         cd frontend
+         npm run dev
+
+
+Configuration
+	•	Database: The backend is configured to connect to a MongoDB instance. Advanced indexes have been implemented in the database schema to ensure optimal performance.
+	•	Authentication: JWT is used to secure API endpoints. Ensure that JWT_SECRET is set in your environment variables.
+	•	Payment Processing: Stripe is used for payment processing. Make sure to configure your Stripe keys properly in the environment variables.
+	•	Image Storage: Images are uploaded to Cloudinary. Configure your Cloudinary credentials in the .env file.
+
+
+
+
+      
