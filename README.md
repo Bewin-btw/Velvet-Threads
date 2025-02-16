@@ -81,7 +81,7 @@ You can reach the deployed version here - https://velvet-threads-frontend.vercel
 
 
 
-Configuration
+## Configuration
 	•	Database: The backend is configured to connect to a MongoDB instance. Advanced indexes have been implemented in the database schema to ensure optimal performance.
 	•	Authentication: JWT is used to secure API endpoints. Ensure that JWT_SECRET is set in your environment variables.
 	•	Payment Processing: Stripe is used for payment processing. Make sure to configure your Stripe keys properly in the environment variables.
