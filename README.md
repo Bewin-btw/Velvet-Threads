@@ -14,10 +14,6 @@ You can reach the deployed version here - https://velvet-threads-frontend.vercel
 - [Tech Stack](#tech-stack)
 - [Setup & Installation](#setup--installation)
 - [Configuration](#configuration)
-- [Usage](#usage)
-- [API Endpoints](#api-endpoints)
-- [Contributing](#contributing)
-- [License](#license)
 
 ---
 
